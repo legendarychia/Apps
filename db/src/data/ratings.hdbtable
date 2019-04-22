@@ -1,0 +1,8 @@
+ COLUMN TABLE "aa.apps.db.data::ratings"(
+    "USERID"     INTEGER CS_INT NOT NULL,
+    "APPID"    INTEGER CS_INT NOT NULL,
+    "USER_RATING"     DOUBLE CS_DOUBLE,
+    PRIMARY KEY (
+        "USERID", "APPID"
+    )
+);

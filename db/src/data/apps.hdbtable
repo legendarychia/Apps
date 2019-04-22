@@ -1,0 +1,8 @@
+COLUMN TABLE "aa.apps.db.data::apps"(
+    "APPID" INTEGER CS_INT NOT NULL,
+    "TRACK_NAME"   VARCHAR(255),
+    "PRIME_GENRE"  VARCHAR(255),
+    PRIMARY KEY (
+        "APPID"
+    )
+);

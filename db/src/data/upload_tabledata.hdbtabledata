@@ -1,0 +1,43 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "column_mappings" : { "APPID" : "appid",        "PRICE" : "price",        "RATING_COUNT_TOT" : "rating_count_tot"
+      },
+      "import_settings" : {
+        "import_columns" : [ "APPID", "PRICE", "RATING_COUNT_TOT"],
+        "include_filter" : [], "exclude_filter" : []
+      },
+      "source_data" : {
+        "data_type" : "CSV", "has_header" : true, "dialect"   : "HANA",
+        "file_name" : "aa.apps.db.data::AppleStore.csv"
+      },
+      "target_table" : "aa.apps.db.data::descriptions"  
+    },
+    {
+      "column_mappings" : { "APPID" : "appid",        "TRACK_NAME" : "track_name",        "PRIME_GENRE" : "prime_genre"      },
+      "import_settings" : {
+        "import_columns" : [ "APPID", "TRACK_NAME", "PRIME_GENRE"],
+        "include_filter" : [], "exclude_filter" : []
+      },
+      "source_data" : {
+        "data_type" : "CSV", "has_header" : true, "dialect"   : "HANA",
+        "file_name" : "aa.apps.db.data::AppleStore.csv"
+      },
+      "target_table" : "aa.apps.db.data::apps"  
+    },
+    {
+      "column_mappings" : { "USERID" : "userid",        "APPID" : "appid",        "USER_RATING" : "user_rating"    },
+      "import_settings" : {
+        "import_columns" : [ "USERID", "APPID", "USER_RATING"],
+        "include_filter" : [], "exclude_filter" : []
+      },
+      "source_data" : {
+        "data_type" : "CSV", "has_header" : true, "dialect"   : "HANA",
+        "file_name" : "aa.apps.db.data::AppleStore.csv"
+      },
+      "target_table" : "aa.apps.db.data::ratings"  
+    }
+   
+  ]
+}

@@ -1,0 +1,48 @@
+view "aa.apps.db.hdb.apl.views::recommendation_contentbased" as
+select
+  t1.appid, rank, similar_app, score, track_name, prime_genre, price, rating_count_tot
+from (
+  select
+      t1.appid
+    , row_number() over(partition by t1.appid order by t1.score desc, t1.consequent desc ) as rank
+    , t1.consequent as similar_app
+    , t1.score
+  from (
+      select
+          t1.appid
+        , t1.consequent
+        , max(t1.score) as score
+      from (
+        select
+            t1.appid
+          , t1.consequent
+          , t1.support / (coalesce (t2_1.count_antecedent,0) + coalesce (t2_2.count_antecedent,0) ) as score
+        from (
+            select
+                nodes.node as appid
+              , rules.kxnodesecond   as antecedent
+              , rules.kxnodesecond_2 as consequent
+              , rules.weight as support
+            from
+              "aa.apps.db.hdb.apl::recommendation.model_node_app" nodes
+            left outer join (select * from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name = 'Item' ) rules    on (nodes.node = rules.kxnodesecond)
+              where rules.kxnodesecond_2 is not null
+            union all
+            select
+                nodes.node as appid
+              , rules.kxnodesecond_2 as antecedent
+              , rules.kxnodesecond   as consequent
+              , rules.weight as support
+            from
+              "aa.apps.db.hdb.apl::recommendation.model_node_app" nodes
+            left outer join (select * from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name = 'Item' ) rules    on (nodes.node = rules.kxnodesecond_2)
+            where rules.kxnodesecond is not null
+        ) t1
+        left outer join (select kxnodesecond   as antecedent, cast(count(*) as float) as count_antecedent from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name ='Transactions' group by kxnodesecond  ) t2_1 on (t1.antecedent = t2_1.antecedent)
+        left outer join (select kxnodesecond_2 as antecedent, cast(count(*) as float) as count_antecedent from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name ='Transactions' group by kxnodesecond_2) t2_2 on (t1.antecedent = t2_2.antecedent)
+      ) t1 group by t1.appid, t1.consequent
+  ) t1
+) t1
+left outer join "aa.apps.db.data::apps" apps on apps.appid = t1.similar_app
+left outer join "aa.apps.db.data::descriptions"  descriptions  on descriptions.appid  = t1.similar_app
+where rank <= 5;
