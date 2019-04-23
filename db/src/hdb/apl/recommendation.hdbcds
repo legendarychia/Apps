@@ -170,8 +170,8 @@ context recommendation {
         RANK    : Integer64;
         APPID : Integer;
         SCORE   : Double;
-        TRACK_NAME   : String(255);
-        PRIME_GENRE  : String(255);
+        TITLE   : String(255);
+        GENRE  : String(255);
         PRICE  : Double;
         RATING_COUNT_TOT  : Integer;
     };
@@ -180,8 +180,8 @@ context recommendation {
         RANK          : Integer64;
         SIMILAR_APP : Integer;
         SCORE         : Double;
-        TRACK_NAME         : String(255);
-        PRIME_GENRE        : String(255);
+        TITLE         : String(255);
+        GENRE        : String(255);
         PRICE        : Double;
         RATING_COUNT_TOT        : Integer;
     };
