@@ -1,5 +1,6 @@
 namespace aa.apps.db.hdb.apl;
 
+
 context recommendation {
     entity function_header {
         KEY   : String(50);
@@ -112,6 +113,8 @@ context recommendation {
         VALUE    : LargeString;
         DETAIL   : LargeString;
     };
+    
+   
     table type tt_apps_dataset {
         USERID    : Integer;
         APPID   : Integer;

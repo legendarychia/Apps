@@ -10,19 +10,19 @@
       },
       "source_data" : {
         "data_type" : "CSV", "has_header" : true, "dialect"   : "HANA",
-        "file_name" : "aa.apps.db.data::AppleStore.csv"
+        "file_name" : "aa.apps.db.data::descriptions.csv"
       },
       "target_table" : "aa.apps.db.data::descriptions"  
     },
     {
-      "column_mappings" : { "APPID" : "appid",        "TRACK_NAME" : "track_name",        "PRIME_GENRE" : "prime_genre"      },
+      "column_mappings" : { "APPID" : "appid",        "TITLE" : "title",        "GENRE" : "genre"      },
       "import_settings" : {
-        "import_columns" : [ "APPID", "TRACK_NAME", "PRIME_GENRE"],
+        "import_columns" : [ "APPID", "TITLE", "GENRE"],
         "include_filter" : [], "exclude_filter" : []
       },
       "source_data" : {
         "data_type" : "CSV", "has_header" : true, "dialect"   : "HANA",
-        "file_name" : "aa.apps.db.data::AppleStore.csv"
+        "file_name" : "aa.apps.db.data::apps.csv"
       },
       "target_table" : "aa.apps.db.data::apps"  
     },
@@ -34,7 +34,7 @@
       },
       "source_data" : {
         "data_type" : "CSV", "has_header" : true, "dialect"   : "HANA",
-        "file_name" : "aa.apps.db.data::AppleStore.csv"
+        "file_name" : "aa.apps.db.data::ratings.csv"
       },
       "target_table" : "aa.apps.db.data::ratings"  
     }

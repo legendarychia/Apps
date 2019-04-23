@@ -1,6 +1,6 @@
 view "aa.apps.db.hdb.apl.views::recommendation_collaborative" as
 select
-  userid, rank, t1.appid, score, track_name, prime_genre, price , rating_count_tot
+  userid, rank, t1.appid, score, title, genre, price , rating_count_tot
 from (
   select
       t1.userid

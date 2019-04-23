@@ -1,0 +1,10 @@
+{
+    "area" : "AFLPAL",
+    "function" : "APRIORIRULE",
+    "parameters" : [
+        { "direction" : "IN",  "type" : "aa.apps.db.hdb.pal::apriori.tt_apps_dataset"},
+        { "direction" : "IN",  "type" : "aa.apps.db.hdb.pal::apriori.tt_parameter"},
+        { "direction" : "OUT", "type" : "aa.apps.db.hdb.pal::apriori.tt_rules"},
+        { "direction" : "OUT", "type" : "aa.apps.db.hdb.pal::apriori.tt_pmml"}
+    ]
+}
