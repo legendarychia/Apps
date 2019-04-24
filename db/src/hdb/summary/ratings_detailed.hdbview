@@ -1,0 +1,12 @@
+view "aa.apps.db.hdb.summary::ratings_detailed" as
+select
+      t1.appid
+    , t1.userid
+    , 'user id: ' || t1.userid || ' - user rating: ' || t1.user_rating || ' - app id: ' || t1.appid || ' - title: ' || t2.title as description
+    , t2.title
+    , t2.genre
+    , t3.downloads
+    , t1.user_rating
+from "aa.apps.db.data::ratings" t1
+left outer join "aa.apps.db.data::apps" t2 on (t1.appid = t2.appid)
+left outer join "aa.apps.db.data::descriptions"  t3 on (t1.appid = t3.appid);

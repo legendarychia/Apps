@@ -1,0 +1,14 @@
+view "aa.apps.db.hdb.summary::ratings_app" as
+select distinct
+      t1.appid
+    , 'app id: ' || t1.appid || ' - rating count: ' || count(1) over( partition by t1.appid ) as description
+    , t2.title
+    , t2.genre
+    , t3.downloads
+    , count(1)                over( partition by t1.appid ) as rating_count
+    , avg(user_rating)             over( partition by t1.appid ) as rating_avg
+    , nth_value(user_rating   , 1) over( partition by t1.appid order by t1.appid) as latest_rating
+    , nth_value(userid   , 1) over( partition by t1.appid order by  t1.appid) as rating_userid
+from "aa.apps.db.data::ratings" t1
+left outer join "aa.apps.db.data::apps" t2 on (t1.appid = t2.appid)
+left outer join "aa.apps.db.data::descriptions"  t3 on (t1.appid = t3.appid);

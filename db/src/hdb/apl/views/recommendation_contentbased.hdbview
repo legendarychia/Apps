@@ -1,6 +1,6 @@
 view "aa.apps.db.hdb.apl.views::recommendation_contentbased" as
 select
-  t1.appid, rank, similar_app, score, title, genre, price, rating_count_tot
+  t1.appid, rank, similar_app, score, title, genre, downloads, reviews
 from (
   select
       t1.appid

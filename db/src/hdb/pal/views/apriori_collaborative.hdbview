@@ -1,6 +1,6 @@
 view "aa.apps.db.hdb.pal.views::apriori_collaborative" as
 select
-  userid, rank, t1.appid, score, title, genre, price, rating_count_tot
+  userid, rank, t1.appid, score, title, genre, downloads, reviews
 from (
   select
       t1.userid

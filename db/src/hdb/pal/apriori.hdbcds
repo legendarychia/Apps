@@ -60,19 +60,19 @@ context apriori {
         RANK    : Integer;
         APPID : Integer;
         SCORE   : Double;
-        TRACK_NAME   : String(255);
-        PRIME_GENRE  : String(255);
-        PRICE  : Double;
-        RATING_COUNT_TOT  : Integer;
+        TITLE   : String(255);
+        GENRE  : String(255);
+        DOWNLOADS  : Double;
+        REVIEWS  : Integer;
     };
     table type tt_apps_contentbased_result {
         APPID       : Integer;
         RANK          : Integer;
         SIMILAR_APP : Integer;
         SCORE         : Double;
-        TRACK_NAME         : String(255);
-        PRIME_GENRE        : String(255);
-        PRICE        : Double;
-        RATING_COUNT_TOT        : Integer;
+        TITLE         : String(255);
+        GENRE        : String(255);
+        DOWNLOADS        : Double;
+        REVIEWS        : Integer;
     };
 };

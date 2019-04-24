@@ -172,8 +172,8 @@ context recommendation {
         SCORE   : Double;
         TITLE   : String(255);
         GENRE  : String(255);
-        PRICE  : Double;
-        RATING_COUNT_TOT  : Integer;
+        DOWNLOADS  : Integer;
+        REVIEWS  : Integer;
     };
     table type tt_apps_contentbased_result {
         APPID       : Integer;
@@ -182,7 +182,7 @@ context recommendation {
         SCORE         : Double;
         TITLE         : String(255);
         GENRE        : String(255);
-        PRICE        : Double;
-        RATING_COUNT_TOT        : Integer;
+        DOWNLOADS        : Integer;
+        REVIEWS        : Integer;
     };
 };

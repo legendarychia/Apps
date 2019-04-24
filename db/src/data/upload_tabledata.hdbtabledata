@@ -2,10 +2,10 @@
   "format_version": 1,
   "imports": [
     {
-      "column_mappings" : { "APPID" : "appid",        "PRICE" : "price",        "RATING_COUNT_TOT" : "rating_count_tot"
+      "column_mappings" : { "APPID" : "appid",        "DOWNLOADS" : "downloads",        "REVIEWS" : "reviews"
       },
       "import_settings" : {
-        "import_columns" : [ "APPID", "PRICE", "RATING_COUNT_TOT"],
+        "import_columns" : [ "APPID", "DOWNLOADS", "REVIEWS"],
         "include_filter" : [], "exclude_filter" : []
       },
       "source_data" : {

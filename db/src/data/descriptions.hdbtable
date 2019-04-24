@@ -1,7 +1,7 @@
 COLUMN TABLE "aa.apps.db.data::descriptions"(
     "APPID" INTEGER CS_INT NOT NULL,
-    "PRICE"  DOUBLE CS_DOUBLE,
-    "RATING_COUNT_TOT"  INTEGER CS_INT,
+    "DOWNLOADS"  INTEGER CS_INT,
+    "REVIEWS"  INTEGER CS_INT,
     PRIMARY KEY (
         "APPID"
     )
