@@ -1,0 +1,27 @@
+PROCEDURE "aa.apps.db.hdb.pal.procedure::apriori_result_contentbased" (
+    in AppId   integer default -1
+   ,in KeepTopN  integer default 5
+   ,out results  "aa.apps.db.hdb.pal::apriori.tt_apps_contentbased_result"
+)
+LANGUAGE SQLSCRIPT SQL SECURITY INVOKER AS
+BEGIN
+    results = select
+    t1.appid, rank, similar_app, score, title, genre, downloads, reviews    
+  from (
+    select
+        t1.appid
+      , row_number() over(partition by t1.appid order by t1.score desc, t1.consequent desc ) as rank
+      , cast(t1.consequent as integer) as similar_app
+      , t1.score
+    from (
+      select appid, rules.postrule as consequent, rules.confidence as score
+      from "aa.apps.db.data::apps" as input_data
+      left outer join "aa.apps.db.hdb.pal::apriori.rules" rules on (cast (input_data.appid as varchar(500)) = rules.prerule)
+      where rules.postrule is not null
+      and   input_data.appid = :AppId
+    ) t1
+  ) t1
+  left outer join "aa.apps.db.data::apps" apps on apps.appid = t1.similar_app
+  left outer join "aa.apps.db.data::descriptions"  descriptions  on descriptions.appid  = t1.similar_app
+  where t1.rank <= :KeepTopN;
+END;
