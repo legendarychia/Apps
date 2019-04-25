@@ -1,0 +1,59 @@
+PROCEDURE "aa.apps.db.hdb.apl.procedure::recommendation_result_contentbased" (
+    in AppId             integer default -1
+   ,in IncludeBestSeller   integer default 0
+   ,in BestSellerThreshold integer default 50000
+   ,in KeepTopN            integer default 5
+   ,out results          "aa.apps.db.hdb.apl::recommendation.tt_apps_contentbased_result"
+)
+LANGUAGE SQLSCRIPT SQL SECURITY INVOKER AS
+BEGIN
+    results = select
+    t1.appid, rank, similar_app, score, title, genre, downloads, reviews
+  from (
+    select
+        t1.appid
+      , t1.consequent as similar_app , t1.score
+      , row_number() over(partition by t1.appid order by t1.score desc, t1.consequent desc ) as rank
+    from (
+        select
+            t1.appid, t1.consequent
+          , max(t1.score) as score
+        from (
+          select
+              t1.appid, t1.consequent
+            , t1.support / (coalesce (t2_1.count_antecedent,0) + coalesce (t2_2.count_antecedent,0) ) as score
+          from (
+              select
+                  nodes.node as appid
+                , rules.kxnodesecond   as antecedent
+                , rules.kxnodesecond_2 as consequent
+                , rules.weight as support
+              from
+                "aa.apps.db.hdb.apl::recommendation.model_node_app" nodes
+              left outer join (select * from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name = 'Item' ) rules    on (nodes.node = rules.kxnodesecond)
+              where rules.kxnodesecond_2 is not null
+              and   nodes.node = :AppId
+              union all
+              select
+                  nodes.node as appid
+                , rules.kxnodesecond_2 as antecedent
+                , rules.kxnodesecond   as consequent
+                , rules.weight as support
+              from
+                "aa.apps.db.hdb.apl::recommendation.model_node_app" nodes
+              left outer join (select * from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name = 'Item' ) rules    on (nodes.node = rules.kxnodesecond_2)
+              where rules.kxnodesecond is not null
+              and   nodes.node = :AppId
+          ) t1
+          left outer join (select kxnodesecond   as antecedent, cast(count(*) as float) as count_antecedent from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name ='Transactions' group by kxnodesecond  ) t2_1 on (t1.antecedent = t2_1.antecedent)
+          left outer join (select kxnodesecond_2 as antecedent, cast(count(*) as float) as count_antecedent from "aa.apps.db.hdb.apl::recommendation.model_links" where graph_name ='Transactions' group by kxnodesecond_2) t2_2 on (t1.antecedent = t2_2.antecedent)
+          union all
+          select :AppId as appid, appid as consequent, count(1) from "aa.apps.db.data::ratings" nodes
+          where :IncludeBestSeller = 1 and appid != :AppId group by appid having count(1) > BestSellerThreshold
+        ) t1 group by t1.appid, t1.consequent
+    ) t1
+  ) t1
+  left outer join "aa.apps.db.data::apps" apps on apps.appid = t1.similar_app
+  left outer join "aa.apps.db.data::descriptions"  descriptions  on descriptions.appid  = t1.similar_app
+  where rank <= :KeepTopN;
+END;
