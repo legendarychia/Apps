@@ -1,0 +1,12 @@
+service {
+  // expose the model result views
+  "aa.apps.db.hdb.apl.views::recommendation_collaborative"  as "apl_recommendation_collaborative" key ("USERID" , "RANK");
+  "aa.apps.db.hdb.apl.views::recommendation_contentbased"   as "apl_recommendation_contentbased"  key ("APPID", "RANK");
+  "aa.apps.db.hdb.pal.views::apriori_collaborative"         as "pal_apriori_collaborative"        key ("USERID" , "RANK");
+  "aa.apps.db.hdb.pal.views::apriori_contentbased"          as "pal_apriori_contentbased"         key ("APPID", "RANK");
+
+  // expose the summary user and movie views
+  "aa.apps.db.hdb.summary::ratings_user"       as "ratings_user"     key ("USERID");
+  "aa.apps.db.hdb.summary::ratings_app"      as "ratings_app"    key ("APPID");
+  "aa.apps.db.hdb.summary::ratings_detailed"   as "ratings_detailed" key ("USERID", "APPID");
+}
