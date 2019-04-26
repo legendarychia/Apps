@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ui="sap.ui"
+  xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <Panel expandable="false" headerText="Results for the APL Recommendation Algorithm">
+    <ui:table.Table selectionMode="None" visibleRowCount="5" enableBusyIndicator="true" id="app_results_apl"
+      rows="{ path: 'odata>/apl_recommendation_contentbased'}">
+      <ui:columns>
+        <ui:table.Column sortProperty="SIMILAR_APP" width="10%">
+          <Label text="Similar App ID"/>
+          <ui:template>
+            <Text text="{odata>SIMILAR_APP}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column sortProperty="TITLE">
+          <Label text="Title"/>
+          <ui:template>
+            <Text text="{odata>TITLE}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column sortProperty="RANK" width="10%">
+          <Label text="Rank"/>
+          <ui:template>
+            <Text text="{odata>RANK}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column sortProperty="odata>SCORE" width="10%">
+          <Label text="Score"/>
+          <ui:template>
+            <Text text="{path : 'odata>SCORE', formatter : '.formatter.formatPercent'}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column width="15%">
+          <Label text="Links"/>
+          <ui:template>
+          </ui:template>
+        </ui:table.Column>
+      </ui:columns>
+    </ui:table.Table>
+  </Panel>
+  <Panel expandable="false" headerText="Results for the PAL APRIORI Algorithm">
+    <ui:table.Table selectionMode="None" visibleRowCount="5" enableBusyIndicator="true" id="app_results_pal"
+      rows="{ path: 'odata>/pal_apriori_contentbased'}">
+      <ui:columns>
+        <ui:table.Column sortProperty="SIMILAR_APP" width="10%">
+          <Label text="Similar App ID"/>
+          <ui:template>
+            <Text text="{odata>SIMILAR_APP}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column sortProperty="TITLE">
+          <Label text="Title"/>
+          <ui:template>
+            <Text text="{odata>TITLE}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column sortProperty="RANK" width="10%">
+          <Label text="Rank"/>
+          <ui:template>
+            <Text text="{odata>RANK}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column sortProperty="SCORE" width="10%">
+          <Label text="Score"/>
+          <ui:template>
+            <Text text="{path : 'odata>SCORE', formatter : '.formatter.formatPercent'}" wrapping="false"/>
+          </ui:template>
+        </ui:table.Column>
+        <ui:table.Column width="15%">
+          <Label text="Links"/>
+          <ui:template>
+  
+          </ui:template>
+        </ui:table.Column>
+      </ui:columns>
+    </ui:table.Table>
+  </Panel>
+</core:FragmentDefinition>

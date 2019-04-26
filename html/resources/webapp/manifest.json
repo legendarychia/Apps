@@ -99,7 +99,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "apps.html.view",
+				"viewPath": "apps.html",
 				"controlAggregation": "pages",
 				"controlId": "idAppControl",
 				"transition": "slide"

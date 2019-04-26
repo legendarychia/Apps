@@ -3,8 +3,8 @@
   <u:Menu itemSelect="handleMenuItemPress">
     <u:MenuItem text="View Results with XS OData">
       <u:Menu>
-        <u:MenuItem text="Collaborative Filtering" custom:to="xsodata.collaborative"/>
-        <u:MenuItem text="Content-Based Filtering" custom:to="xsodata.contentbased"/>
+        <u:MenuItem text="Collaborative Filtering" custom:to="apps.html.view.xsodata.collaborative"/>
+        <u:MenuItem text="Content-Based Filtering" custom:to="apps.html.view.xsodata.contentbased"/>
       </u:Menu>
     </u:MenuItem>
     <u:MenuItem text="Execute Algorithms with XSJS">

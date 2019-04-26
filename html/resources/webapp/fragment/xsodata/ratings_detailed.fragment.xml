@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ui="sap.ui"
+  xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <ui:table.Table selectionMode="None" visibleRowCount="5" enableBusyIndicator="true" id="history"
+    rows="{ path: 'odata>/ratings_detailed', filters: [ { path: 'USERID', operator: 'EQ', value1: '-1' } ]}">
+    <ui:columns>
+      <ui:table.Column sortProperty="USERID" width="10%">
+        <Label text="User ID"/>
+        <ui:template>
+          <Text text="{odata>USERID}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column sortProperty="APPID" width="10%">
+        <Label text="App ID"/>
+        <ui:template>
+          <Text text="{odata>APPID}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column sortProperty="TITLE">
+        <Label text="Title"/>
+        <ui:template>
+          <Text text="{odata>TITLE}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column sortProperty="USER_RATING" width="10%">
+        <Label text="Note"/>
+        <ui:template>
+          <Text text="{odata>USER_RATING}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column width="15%">
+        <Label text="Links"/>
+        <ui:template>
+        </ui:template>
+      </ui:table.Column>
+    </ui:columns>
+  </ui:table.Table>
+</core:FragmentDefinition>

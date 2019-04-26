@@ -22,14 +22,12 @@ sap.ui.define([
 
 			// enable routing
 			this.getRouter().initialize();
+			
+
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 			
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-		},
-		 getRouter: function() {
-		      return sap.ui.core.UIComponent.getRouterFor(this);
-		    }
+		}
 	});
 });

@@ -20,6 +20,7 @@ sap.ui.define([
       var eDock = sap.ui.core.Popup.Dock;
       this._menu.open(this._bKeyboard, oButton, eDock.BeginTop, eDock.BeginBottom, oButton);
     },
+  
     handleMenuItemPress: function(oEvent) {
       if (oEvent.getParameter("item").getSubmenu()) {
         return;
