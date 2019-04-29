@@ -20,14 +20,11 @@ sap.ui.define([
 			// call the base component's init function
 			sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 
-			// enable routing
-			this.getRouter().initialize();
 			
-
-
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 			
+
 		}
 	});
 });

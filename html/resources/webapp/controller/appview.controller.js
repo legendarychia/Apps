@@ -21,13 +21,17 @@ sap.ui.define([
       this._menu.open(this._bKeyboard, oButton, eDock.BeginTop, eDock.BeginBottom, oButton);
     },
   
+   getOwnerComponent: function () {
+        return sap.ui.component("myComp");
+    },
+    
     handleMenuItemPress: function(oEvent) {
       if (oEvent.getParameter("item").getSubmenu()) {
         return;
       }
       var to = oEvent.getParameter("item").data("to");
       if (to) {
-        this.getOwnerComponent().getTargets().display(to);
+        this.getOwnerComponent("myComp").getTargets().display(to);
       }
 
     },
