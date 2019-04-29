@@ -46,7 +46,7 @@
 
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "apps.html.view.appview",
+			"viewName": "apps.html.view.idAppControl",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -99,7 +99,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "apps.html",
+				"viewPath": "apps.html.view",
 				"controlAggregation": "pages",
 				"controlId": "idAppControl",
 				"transition": "slide"
