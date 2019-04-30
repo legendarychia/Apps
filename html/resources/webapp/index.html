@@ -20,20 +20,20 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<script>
-			sap.ui.getCore().attachInit(function() {
-					var oComp =  sap.ui.getCore().createComponent({
+		var oComp =  sap.ui.getCore().createComponent({
 						name:"apps.html",
 						id:"myComp",
 						height:"100%",
 						propagateModel:true
 					});
+					sap.ui.getCore().attachInit(function() {
+						
 					new sap.m.Shell({
-				
-		
-				app: new sap.ui.core.ComponentContainer({
+					app: new sap.ui.core.ComponentContainer({
 						component:oComp
 					}).placeAt("content")
-					});
+				});
+				
 			
 					sap.ui.xmlview({
 					viewName:"apps.html.view.appview"

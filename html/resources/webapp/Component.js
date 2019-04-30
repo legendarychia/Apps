@@ -1,8 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"apps/html/model/models"
-], function (UIComponent, Device, models) {
+	"apps/html/model/models",
+	"sap/m/routing/RouteMatchedHandler",
+	"sap/ui/core/routing/History",
+	"jquery.sap.global"
+], function (UIComponent, Device, models,Router,jquery) {
 	"use strict";
 
 	return UIComponent.extend("apps.html.Component", {
@@ -16,6 +19,11 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
+		 	
+		 getRouter: function() {
+		      return sap.ui.core.UIComponent.getRouterFor(this);
+		    },
+		    
 		init: function () {
 			// call the base component's init function
 			sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
@@ -26,7 +34,8 @@ sap.ui.define([
 			
 			this.getRouter().initialize();
 			
-		
 		}
+	
+		    
 	});
 });

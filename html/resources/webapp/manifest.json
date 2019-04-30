@@ -46,8 +46,9 @@
 
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "apps.html.view.idAppControl",
-			"type": "XML"
+			"viewName": "apps.html.view.appview",
+			"type": "XML",
+			"id": "app"
 		},
 		"dependencies": {
 			"minUI5Version": "1.30.0",
@@ -101,14 +102,45 @@
 				"async": true,
 				"viewPath": "apps.html.view",
 				"controlAggregation": "pages",
-				"controlId": "idAppControl",
+				"controlId": "app",
 				"transition": "slide"
 			},
 			"routes": [{
-				"name": "appview",
+				"name": "app",
 				"pattern": "",
-				"target": ["appview"]
-			}],
+				"target": ["appview"],
+				"view" : "appview",
+				"viewPath":"apps.html.view.appview"
+				},
+				{
+				"pattern" : "",
+				"name" : "collaborative",
+				"target" : "xsodata.collaborative",
+				"view" : "xsodata.collaborative",
+				"viewPath":"apps.html.view.xsodata.collaborative"
+				},
+				{
+				"pattern" : "",
+				"name" : "contentbased",
+				"target" : "xsodata.contentbased",
+				"view" : "xsodata.contentbased",
+				"viewPath":"apps.html.view.xsodata.contentbased"
+				},
+				{
+				"pattern" : "",
+				"name" : "apl_recommendation",
+				"target" : "xsjs.apl_recommendation",
+				"view" : "xsjs.apl_recommendation",
+				"viewPath":"apps.html.view.xsjs.apl_recommendation"
+				},
+				{
+				"pattern" : "",
+				"name" : "pal_apriori",
+				"target" : "xsjs.pal_apriori",
+				"view" : "xsjs.pal_apriori",
+				"viewPath":"apps.html.view.xsjs.pal_apriori"
+				}
+				],
 			"targets": {
 				"appview": {
 				   "clearAggregation": true,
