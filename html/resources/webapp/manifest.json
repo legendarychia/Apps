@@ -115,29 +115,29 @@
 				{
 				"pattern" : "",
 				"name" : "collaborative",
-				"target" : "xsodata.collaborative",
-				"view" : "xsodata.collaborative",
+				"target" : ["xsodata.collaborative"],
+				"view" : "collaborative",
 				"viewPath":"apps.html.view.xsodata.collaborative"
 				},
 				{
 				"pattern" : "",
 				"name" : "contentbased",
-				"target" : "xsodata.contentbased",
-				"view" : "xsodata.contentbased",
+				"target" : ["xsodata.contentbased"],
+				"view" : "contentbased",
 				"viewPath":"apps.html.view.xsodata.contentbased"
 				},
 				{
 				"pattern" : "",
 				"name" : "apl_recommendation",
-				"target" : "xsjs.apl_recommendation",
-				"view" : "xsjs.apl_recommendation",
+				"target" : ["xsjs.apl_recommendation"],
+				"view" : "apl_recommendation",
 				"viewPath":"apps.html.view.xsjs.apl_recommendation"
 				},
 				{
 				"pattern" : "",
 				"name" : "pal_apriori",
 				"target" : "xsjs.pal_apriori",
-				"view" : "xsjs.pal_apriori",
+				"view" : ["pal_apriori"],
 				"viewPath":"apps.html.view.xsjs.pal_apriori"
 				}
 				],

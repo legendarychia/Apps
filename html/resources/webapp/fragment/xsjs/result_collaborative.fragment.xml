@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ui="sap.ui">
+  <ui:table.Table selectionMode="None" visibleRowCount="5" enableBusyIndicator="true" rows="{ path: 'results>/items'}">
+    <ui:columns>
+      <ui:table.Column sortProperty="APPID" width="10%">
+        <Label text="App ID"/>
+        <ui:template>
+          <Text text="{results>APPID}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column sortProperty="TITLE">
+        <Label text="Title"/>
+        <ui:template>
+          <Text text="{results>TITLE}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column sortProperty="RANK" width="10%">
+        <Label text="Rank"/>
+        <ui:template>
+          <Text text="{results>RANK}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column sortProperty="SCORE" width="10%">
+        <Label text="Score"/>
+        <ui:template>
+          <Text text="{path : 'results>SCORE', formatter : '.formatter.formatPercent'}"/>
+        </ui:template>
+      </ui:table.Column>
+      <ui:table.Column width="15%">
+        <Label text="Links"/>
+        <ui:template>
+        </ui:template>
+      </ui:table.Column>
+    </ui:columns>
+  </ui:table.Table>
+</core:FragmentDefinition>
