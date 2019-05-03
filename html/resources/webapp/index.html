@@ -22,16 +22,20 @@
 		<script>
 
 					sap.ui.getCore().attachInit(function() {
-						
+			
+					var oComp =  sap.ui.getCore().createComponent({
+								name:"apps.html",
+								id:"myComp",
+								height:"100%",
+								propagateModel:true
+							});	
+							
 					new sap.m.Shell({
-					app: new sap.ui.core.ComponentContainer({
-						name:"apps.html",
-						id:"myComp",
-						height:"100%",
-						propagateModel:true
-					}).placeAt("content")
-				});
-				
+								app: new sap.ui.core.ComponentContainer({
+									component:oComp
+								}).placeAt("content")
+							});
+							
 			
 					sap.ui.xmlview({
 					viewName:"apps.html.view.appview"

@@ -98,6 +98,7 @@
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
+				"targetsClass":"sap.m.routing.Targets",
 				"viewType": "XML",
 				"async": true,
 				"viewPath": "apps.html.view",
