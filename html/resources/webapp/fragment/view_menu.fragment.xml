@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
-  xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:u="sap.ui.unified">
+  xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:u="sap.ui.unified" controllerName="apps.html.controller.appview">
   <u:Menu itemSelect="handleMenuItemPress">
     <u:MenuItem text="View Results with XS OData">
       <u:Menu>

@@ -4,11 +4,13 @@ sap.ui.define([
   "sap/ui/model/Filter",
   "sap/ui/model/FilterOperator",
   "sap/ui/model/FilterType",
-  "apps/html/model/formatter"
-], function(Controller, Filter, FilterOperator, FilterType, formatter) {
+  "apps/html/model/formatter",
+  "sap/ui/core/routing/Router"
+], function(Controller, Filter, FilterOperator, FilterType, formatter, Router) {
   "use strict";
   return Controller.extend("apps.html.controller.appview", {
     formatter: formatter,
+
 
     handlePressOpenMenu: function(oEvent) {
       var oButton = oEvent.getSource();
@@ -25,6 +27,9 @@ sap.ui.define([
         return sap.ui.component("myComp");
     },
     
+   getRouter :function(){
+    return sap.ui.core.UIComponent.getRouterFor(this);	
+    },
     handleMenuItemPress: function(oEvent) {
       if (oEvent.getParameter("item").getSubmenu()) {
         return;
