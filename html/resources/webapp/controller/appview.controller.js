@@ -30,6 +30,7 @@ sap.ui.define([
    getRouter :function(){
     return sap.ui.core.UIComponent.getRouterFor(this);	
     },
+    
     handleMenuItemPress: function(oEvent) {
       if (oEvent.getParameter("item").getSubmenu()) {
         return;
