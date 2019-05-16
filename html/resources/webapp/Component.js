@@ -1,12 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"apps/html/model/models",
-	"sap/m/routing/RouteMatchedHandler",
-	"sap/ui/core/routing/History",
-	"jquery.sap.global",
-	"sap/ui/core/routing/Router"
-], function (UIComponent, Device, models,Router,jquery) {
+	"apps/html/model/models"
+], function (UIComponent, Device, models) {
 	"use strict";
 
 	return UIComponent.extend("apps.html.Component", {

@@ -27,9 +27,6 @@ sap.ui.define([
         return sap.ui.component("myComp");
     },
     
-   getRouter :function(){
-    return sap.ui.core.UIComponent.getRouterFor(this);	
-    },
     
     handleMenuItemPress: function(oEvent) {
       if (oEvent.getParameter("item").getSubmenu()) {
